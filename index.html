@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Bulb</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="./style.css">
+  <script src="particles.js"></script>
+</head>
+<body>
+  <div id="particles-div" style="margin: 0; padding: 0; height: 100vh; position: fixed; z-index: 1">
+    
+  </div>
+  <script>
+    particlesJS.load("particles-div", "particles.json")
+  </script>
+  <div class="whole col-12 row">
+  	<h1 class="display-4 font-weight-bold">
+  	Light House
+  </h1>
+    <div class="col-md-4 col-3">
+      <div class="line_1"></div>
+      <div class="bulb-1"></div>
+      <label class="switch m-4">
+        <input type="checkbox" >
+        <span class="slider round"></span>
+      </label>
+    </div>
+
+    <div class="col-md-4 col-5">
+      <div class="line"></div>
+      <div class="bulb"></div>
+      <label class="switch m-4">
+        <input type="checkbox" >
+        <span class="slider round"></span>
+      </label>
+    </div>
+
+    <div class="col--md-4 col-4">
+      <div class="line_2"></div>
+      <div class="bulb-2"></div>
+      <label class="switch m-4">
+        <input type="checkbox" >
+        <span class="slider round"></span>
+      </label>
+    </div>
+
+  </div>
+  
+  <script>
+    function check(){
+      var a = $(".bulb").hasClass("bulbHover");
+      var b = $(".bulb-1").hasClass("bulbHover-1");
+      var c = $(".bulb-2").hasClass("bulbHover-2");
+      var d = a && b;
+      var e = b && c;
+      var f = c && a;
+      var g = a && b && c;
+
+      if(a || b || c){
+        $("body").removeClass("dark2");
+        $("body").removeClass("dark3");
+        $("body").addClass("dark1");
+        $("h1").addClass("head");
+      }
+      else{
+        $("body").removeClass("dark1");
+        $("body").removeClass("dark2");
+        $("body").removeClass("dark3");
+        $("h1").removeClass("head");
+      }
+      if(d || e || f){
+        $("body").removeClass("dark1");
+        $("body").removeClass("dark3");
+        $("body").addClass("dark2");
+      }
+      if(g){
+        $("body").removeClass("dark2");
+        $("body").removeClass("dark1");
+        $("body").addClass("dark3");
+      }
+    }
+
+  	function yellow(){
+  		$(".bulb").toggleClass("bulbHover");
+  		$(".line").toggleClass("line-light");
+
+      check();
+  	}
+
+    function blue(){
+      $(".bulb-1").toggleClass("bulbHover-1");
+      $("h1").toggleClass("head");
+      $(".line_1").toggleClass("line-light-1");
+
+      check();
+    }
+
+    function red(){
+      $(".bulb-2").toggleClass("bulbHover-2");
+      $("h1").toggleClass("head");
+      $(".line_2").toggleClass("line-light-2");
+      
+      check();
+    }
+  	document.querySelector(".bulb").onclick = function(){
+  		yellow();
+  	}
+    document.querySelector(".bulb-1").onclick = function(){
+      blue();
+    }
+    document.querySelector(".bulb-2").onclick = function(){
+      red();
+    }
+  	document.querySelector("input").onclick = function(){
+  		light();
+  	}
+  	$( document ).ready(function() {
+	    $(".whole").css("margin","0")
+	});
+  </script>
+</body>
+</html>
